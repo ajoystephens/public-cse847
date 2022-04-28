@@ -1,0 +1,119 @@
+STEP 1: Getting Data and Running Classifier
+Dataset Retrieved
+ Shape of X: (6172, 13)
+ Shape of y: (6172,)
+  splitting data...
+   Train Size: 4938
+   Test Size:  1234
+  training model...
+epoch 0	loss : 0.6656252145767212	 accuracy : 0.4
+epoch 50	loss : 0.5319432616233826	 accuracy : 0.7
+epoch 100	loss : 0.5180336236953735	 accuracy : 0.7
+epoch 150	loss : 0.5008082389831543	 accuracy : 0.7
+epoch 200	loss : 0.48792481422424316	 accuracy : 0.8
+TRAIN Results
+Accuracy: 0.6913730255164034
+R2:       -0.24274418881160464
+AUC:      0.6847997542754097
+TEST Results
+Accuracy: 0.6871961102106969
+R2:       -0.27049208749763265
+AUC:      0.678322704200708
+Predicted  0.0  1.0
+Actual             
+0.0        520  173
+1.0        213  328
+ 
+STEP 2: Finding Least Accurate Cluster
+ using basic clustering...
+trial 0: 0.6121212121212121 (165)
+trial 1: 0.6075949367088608 (158)
+trial 2: 0.6288659793814433 (97)
+trial 3: 0.6121212121212121 (165)
+trial 4: 0.6288659793814433 (97)
+trial 5: 0.6288659793814433 (97)
+trial 6: 0.5833333333333334 (60)
+trial 7: 0.610062893081761 (159)
+trial 8: 0.6288659793814433 (97)
+trial 9: 0.6107784431137725 (167)
+  lowest accuracy: 0.5833333333333334
+
+ using worst cluster search...
+trial 0: 0.5588235294117647 (34)
+trial 1: 0.43478260869565216 (23)
+trial 2: 0.4583333333333333 (24)
+trial 3: 0.4375 (32)
+trial 4: 0.4583333333333333 (24)
+trial 5: 0.4583333333333333 (24)
+trial 6: 0.4666666666666667 (30)
+trial 7: 0.3333333333333333 (15)
+trial 8: 0.45454545454545453 (33)
+trial 9: 0.45161290322580644 (31)
+  lowest accuracy: 0.3333333333333333
+
+For next part will use cluster with lowest accuracy from worst cluster search:
+ accuracy: 0.3333333333333333
+ size: 15
+ 
+STEP 3: Investigating Least Accurate Cluster
+Split Train/test Using Undersampling
+ samples in full dataset: 1234
+ samples in cluster: 15
+ samples in training: 22
+ samples in test: 8
+
+Using LDA --------------------------------------------
+Train accuracy: 1.0
+Test accuracy: 1.0
+Predicted  0  1
+Actual         
+0          4  0
+1          0  4
+Largest Coef:
+                  col           val
+      juv_other_count  1.261426e+01
+        race=Hispanic -9.379618e+00
+race=African-American  8.838355e+00
+       juv_misd_count  6.978432e+00
+    c_charge_degree=F -5.793930e+00
+             sex=Male -4.181445e+00
+                  age  3.702338e+00
+       race=Caucasian  3.258721e+00
+         priors_count  4.650570e-01
+        juv_fel_count  2.393445e-14
+Using KNN --------------------------------------------
+        added_column  accuracy
+                 age     0.875
+        priors_count     1.000
+       juv_fel_count     1.000
+      juv_misd_count     1.000
+     juv_other_count     1.000
+            sex=Male     1.000
+          race=Asian     1.000
+race=Native American     1.000
+          race=Other     1.000
+   c_charge_degree=F     1.000
+
+Calculating Equality of Opportunity for top binary LDA features
+juv_other_count, not binary
+race=Hispanic, eq: 0.24463749463749462
+race=African-American, eq: 0.3176930596285435
+juv_misd_count, not binary
+c_charge_degree=F, eq: 0.23486545211432386
+sex=Male, eq: 0.22588872947553001
+age, not binary
+race=Caucasian, eq: 0.2277152128268753
+priors_count, not binary
+juv_fel_count, not binary
+
+Calculating Equality of Opportunity for top binary KNN features
+age, not binary
+priors_count, not binary
+juv_fel_count, not binary
+juv_misd_count, not binary
+juv_other_count, not binary
+sex=Male, eq: 0.22588872947553001
+race=Asian, eq: 0.608534322820037
+race=Native American, eq: 0.3944444444444445
+race=Other, eq: 0.3003152916447714
+c_charge_degree=F, eq: 0.23486545211432386

@@ -1,0 +1,120 @@
+STEP 1: Getting Data and Running Classifier
+Dataset Retrieved
+ Shape of X: (1000, 58)
+ Shape of y: (1000,)
+  splitting data...
+   Train Size: 670
+   Test Size:  330
+  training model...
+epoch 0	loss : 0.7405925989151001	 accuracy : 0.4666666666666667
+epoch 50	loss : 0.48926347494125366	 accuracy : 0.7666666666666667
+epoch 100	loss : 0.4603849947452545	 accuracy : 0.8333333333333334
+epoch 150	loss : 0.44829437136650085	 accuracy : 0.8333333333333334
+epoch 200	loss : 0.44125503301620483	 accuracy : 0.8333333333333334
+epoch 250	loss : 0.4366700351238251	 accuracy : 0.8333333333333334
+TRAIN Results
+Accuracy: 0.7820895522388059
+R2:       -0.010025916633109144
+AUC:      0.7270080227983768
+TEST Results
+Accuracy: 0.7666666666666667
+R2:       -0.1846706140146397
+AUC:      0.6843442584735886
+Predicted  0.0  1.0
+Actual             
+0.0        208   33
+1.0         44   45
+ 
+STEP 2: Finding Least Accurate Cluster
+ using basic clustering...
+trial 0: 0.7377049180327869 (61)
+trial 1: 0.7169811320754716 (53)
+trial 2: 0.7368421052631579 (57)
+trial 3: 0.717948717948718 (78)
+trial 4: 0.7321428571428571 (56)
+trial 5: 0.7368421052631579 (57)
+trial 6: 0.717948717948718 (78)
+trial 7: 0.7368421052631579 (57)
+trial 8: 0.717948717948718 (78)
+trial 9: 0.7272727272727273 (55)
+  lowest accuracy: 0.7169811320754716
+
+ using worst cluster search...
+trial 0: 0.625 (16)
+trial 1: 0.7058823529411765 (17)
+trial 2: 0.6666666666666666 (18)
+trial 3: 0.7368421052631579 (57)
+trial 4: 0.7272727272727273 (55)
+trial 5: 0.7368421052631579 (57)
+trial 6: 0.6666666666666666 (21)
+trial 7: 0.7321428571428571 (56)
+trial 8: 0.7115384615384616 (52)
+trial 9: 0.5 (16)
+  lowest accuracy: 0.5
+
+For next part will use cluster with lowest accuracy from worst cluster search:
+ accuracy: 0.5
+ size: 16
+ 
+STEP 3: Investigating Least Accurate Cluster
+Split Train/test Using Undersampling
+ samples in full dataset: 330
+ samples in cluster: 16
+ samples in training: 22
+ samples in test: 10
+
+Using LDA --------------------------------------------
+Train accuracy: 0.7727272727272727
+Test accuracy: 0.8
+Predicted  0  1
+Actual         
+0          5  0
+1          2  3
+Largest Coef:
+               col           val
+       purpose=A45  4.083264e+17
+       savings=A64 -7.205759e+16
+ number_of_credits  3.119026e+00
+        status=A12 -2.619224e+00
+  skill_level=A174  2.479849e+00
+       savings=A65 -2.073000e+00
+    telephone=A192  1.787129e+00
+    telephone=A191 -1.787129e+00
+credit_history=A32 -1.760419e+00
+       savings=A62  1.521738e+00
+Using KNN --------------------------------------------
+      added_column  accuracy
+ number_of_credits       0.8
+   residence_since       0.9
+credit_history=A31       1.0
+ people_liable_for       1.0
+        status=A12       1.0
+        status=A13       1.0
+       purpose=A41       1.0
+      purpose=A410       1.0
+       purpose=A43       1.0
+       purpose=A44       1.0
+
+Calculating Equality of Opportunity for top binary LDA features
+purpose=A45, eq: 0.5
+savings=A64, eq: 0.5113636363636364
+number_of_credits, not binary
+status=A12, eq: 0.1706896551724138
+skill_level=A174, eq: 0.16285714285714292
+savings=A65, eq: 0.11190476190476184
+telephone=A192, eq: 0.015151515151515138
+telephone=A191, eq: 0.015151515151515138
+credit_history=A32, eq: 0.07836198179979775
+savings=A62, eq: 0.14918414918414918
+
+Calculating Equality of Opportunity for top binary KNN features
+number_of_credits, not binary
+residence_since, not binary
+credit_history=A31, eq: 0.5301204819277108
+people_liable_for, eq: nan
+status=A12, eq: 0.1706896551724138
+status=A13, eq: 0.5294117647058824
+purpose=A41, eq: 0.08362369337979098
+purpose=A410, eq: 0.005747126436781658
+purpose=A43, eq: 0.2873873873873874
+purpose=A44, eq: 0.1782945736434109

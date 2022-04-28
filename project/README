@@ -1,0 +1,20 @@
+This is the code to accompany the CSE847  end of semester class project.
+
+To run the code:
+1. Check/Install requirements.txt
+3. Run desired bash script: adult.sh compas.sh german.sh
+2. You might get an error msg from aif360 prompting for extra data setup, follow the instructions
+
+If you want to see the exact results from my run-through that was documented in the project you can check the associated file.
+ - result_adult.txt
+ - result_compas.txt
+ - result_german.txt
+
+If you want to send output to text file (such as result_adult.txt):
+$ ./adult.sh >> result_adult.txt
+
+
+
+warnings: 
+ - the spikes folder is an absolute mess. It's where I play around with ideas before implementing the final version of things. You can look, but it really is a mess.
+ - requirements.txt does not consider requirements associated with the spikes folder

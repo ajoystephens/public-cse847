@@ -1,0 +1,119 @@
+STEP 1: Getting Data and Running Classifier
+Dataset Retrieved
+ Shape of X: (45222, 102)
+ Shape of y: (45222,)
+  splitting data...
+   Train Size: 36178
+   Test Size:  9044
+  training model...
+epoch 0	loss : 0.4707585871219635	 accuracy : 0.8333333333333334
+epoch 50	loss : 0.25960296392440796	 accuracy : 0.7777777777777778
+epoch 100	loss : 0.23504632711410522	 accuracy : 0.8333333333333334
+epoch 150	loss : 0.2155943512916565	 accuracy : 0.8888888888888888
+epoch 200	loss : 0.20457397401332855	 accuracy : 0.9444444444444444
+TRAIN Results
+Accuracy: 0.8714964895793024
+R2:       0.3083605430279984
+AUC:      0.812256499386425
+TEST Results
+Accuracy: 0.8480760725342769
+R2:       0.19563554111817694
+AUC:      0.7812510599537
+Predicted   0.0   1.0
+Actual               
+0.0        6193   565
+1.0         809  1477
+ 
+STEP 2: Finding Least Accurate Cluster
+ using basic clustering...
+trial 0: 0.7304770586447888 (3291)
+trial 1: 0.7290899526564966 (3802)
+trial 2: 0.7350881429606375 (4141)
+trial 3: 0.7378588677220285 (3727)
+trial 4: 0.7292817679558011 (3801)
+trial 5: 0.7303793802490588 (3453)
+trial 6: 0.7357016880826405 (3969)
+trial 7: 0.7221193034457206 (2699)
+trial 8: 0.7350881429606375 (4141)
+trial 9: 0.7281973048563437 (3933)
+  lowest accuracy: 0.7221193034457206
+
+ using worst cluster search...
+trial 0: 0.4583333333333333 (24)
+trial 1: 0.5 (26)
+trial 2: 0.6666666666666666 (21)
+trial 3: 0.48484848484848486 (33)
+trial 4: 0.47368421052631576 (19)
+trial 5: 0.5862068965517241 (29)
+trial 6: 0.375 (24)
+trial 7: 0.5 (20)
+trial 8: 0.5333333333333333 (15)
+trial 9: 0.5833333333333334 (24)
+  lowest accuracy: 0.375
+
+For next part will use cluster with lowest accuracy from worst cluster search:
+ accuracy: 0.375
+ size: 24
+ 
+STEP 3: Finding Least Accurate Cluster
+Split Train/test Using Undersampling
+ samples in full dataset: 9044
+ samples in cluster: 24
+ samples in training: 34
+ samples in test: 14
+
+Using LDA --------------------------------------------
+Train accuracy: 1.0
+Test accuracy: 0.8571428571428571
+Predicted  0  1
+Actual         
+0          7  0
+1          2  5
+Largest Coef:
+                        col        val
+occupation=Transport-moving -10.502993
+                        age  -6.895891
+                        sex   5.674376
+          workclass=Private  -4.764354
+          education=HS-grad   4.750892
+             hours-per-week  -4.138767
+     education=Some-college  -4.039474
+        workclass=Local-gov   3.993166
+    occupation=Adm-clerical   3.605757
+ occupation=Exec-managerial  -3.381991
+Using KNN --------------------------------------------
+               added_column  accuracy
+occupation=Transport-moving  0.928571
+                        age  0.928571
+              education-num  0.928571
+                        sex  0.928571
+               capital-gain  0.928571
+               capital-loss  0.928571
+             hours-per-week  0.928571
+      workclass=Federal-gov  0.928571
+        workclass=Local-gov  0.928571
+          workclass=Private  0.928571
+
+Calculating Equality of Opportunity for top binary LDA features
+occupation=Transport-moving, eq: 0.3948185161986126
+age, not binary
+sex, eq: 0.11574938960195336
+workclass=Private, eq: 0.06559193008807263
+education=HS-grad, eq: 0.34351847307367883
+hours-per-week, not binary
+education=Some-college, eq: 0.07341357819608063
+workclass=Local-gov, eq: 0.07728789058156349
+occupation=Adm-clerical, eq: 0.1009600155941619
+occupation=Exec-managerial, eq: 0.22333007380503367
+
+Calculating Equality of Opportunity for top binary KNN features
+occupation=Transport-moving, eq: 0.3948185161986126
+age, not binary
+education-num, not binary
+sex, eq: 0.11574938960195336
+capital-gain, not binary
+capital-loss, not binary
+hours-per-week, not binary
+workclass=Federal-gov, eq: 0.2227107495239744
+workclass=Local-gov, eq: 0.07728789058156349
+workclass=Private, eq: 0.06559193008807263
